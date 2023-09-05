@@ -85,6 +85,7 @@ void FileAesCrypt::SlotFileDecrypt()
         QFile decode_file(decode_path);
         if (decode_file.open(QIODevice::WriteOnly|QIODevice::Text))
         {
+            decode_bytearray = decryption.RemovePadding(decode_bytearray);
             decode_file.write(decode_bytearray);
             decode_file.close();
         }
